@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dirgahayu Republik Indonesia ke-80</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Poppins", sans-serif;
+      background: white;
+      overflow: hidden;
+    }
+
+    /* SCREEN */
+    .screen {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #main-screen { background: white; }
+    #merdeka-screen {
+      display: none;
+      background: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* BENDERA */
+    .flag {
+      width: 80px;
+      height: auto;
+      margin-bottom: 20px;
+      animation: wave 2s infinite ease-in-out;
+    }
+    @keyframes wave {
+      0%,100% { transform: rotate(0deg) translateY(0); }
+      50% { transform: rotate(5deg) translateY(-5px); }
+    }
+
+    /* TEXT UTAMA */
+    h1 {
+      font-size: 2.5rem;
+      color: #e63946;
+      margin: 10px 0;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    /* BUTTON */
+    .btn {
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn:hover {
+      background: #b71c1c;
+      transform: scale(1.05);
+    }
+
+    /* MERDEKA */
+    .merdeka-text {
+      font-size: 5rem; /* sudah dikecilkan */
+      font-weight: 900;
+      color: red;
+      text-shadow: 0 0 15px rgba(255,0,0,0.8), 0 0 30px rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    video {
+      width: 80%;
+      max-width: 700px;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SCREEN 1 -->
+  <div class="screen" id="main-screen">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" class="flag" alt="Bendera Indonesia">
+    <h1>Selamat Hari Kemerdekaan!</h1>
+    <h1>Dirgahayu Republik Indonesia ke-80!</h1>
+    <p>Rayakan momen bersejarah ini bersama kami dengan menyalakan semangat kemerdekaan!</p>
+    <button class="btn" id="btnSemangat">
+      🇮🇩 <span>Nyalakan Semangat</span>
+    </button>
+  </div>
+
+  <!-- SCREEN 2 -->
+  <div class="screen" id="merdeka-screen">
+    <h1 class="merdeka-text">MERDEKA 🔥</h1>
+    <video id="videoKemerdekaan" controls autoplay>
+      <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/9/93/Indonesia_Raya_%28instrumental%29.ogv/Indonesia_Raya_%28instrumental%29.ogv.360p.webm" type="video/webm">
+      Browser Anda tidak mendukung video.
+    </video>
+  </div>
+
+  <script>
+    const btn = document.getElementById("btnSemangat");
+    const mainScreen = document.getElementById("main-screen");
+    const merdekaScreen = document.getElementById("merdeka-screen");
+    const video = document.getElementById("videoKemerdekaan");
+
+    btn.addEventListener("click", () => {
+      mainScreen.style.display = "none";
+      merdekaScreen.style.display = "flex";
+      video.play();
+    });
+  </script>
+</body>
+</html>
